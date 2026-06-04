@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pet Watcher</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Active trip</p>
+          <h1 id="appTitle">Pet Watcher</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="notificationButton" type="button" aria-label="Enable alerts" title="Enable alerts">
+            <span aria-hidden="true">A</span>
+          </button>
+          <button class="icon-button" id="syncButton" type="button" aria-label="Sync dashboard" title="Sync dashboard">
+            <span aria-hidden="true">R</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="status-band" aria-label="Trip status">
+          <div>
+            <span class="status-dot" aria-hidden="true"></span>
+            <p id="dateRange">Short weekend</p>
+            <strong id="tripLabel">Weekend away</strong>
+            <span class="sync-status" id="syncStatus">Local preview</span>
+          </div>
+          <div class="role-switch" aria-label="Current role">
+            <button class="role-option active" data-role="owner" type="button">Owner</button>
+            <button class="role-option" data-role="sitter" type="button">Sitter</button>
+          </div>
+        </section>
+
+        <section class="view active" id="todayView" aria-labelledby="todayTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Today</p>
+              <h2 id="todayTitle">Care checklist</h2>
+            </div>
+            <div class="progress-ring" id="progressRing" aria-label="Task completion progress">
+              <span id="progressText">0%</span>
+            </div>
+          </div>
+          <div class="quick-note" id="ownerNote"></div>
+          <div class="day-tabs" id="dayTabs" aria-label="Checklist day"></div>
+          <div class="task-groups" id="taskGroups"></div>
+        </section>
+
+        <section class="view" id="calendarView" aria-labelledby="calendarTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Planner</p>
+              <h2 id="calendarTitle">June 2026</h2>
+            </div>
+          </div>
+          <div class="planner-list" id="plannerList"></div>
+        </section>
+
+        <section class="view" id="profilesView" aria-labelledby="profilesTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Profiles</p>
+              <h2 id="profilesTitle">Pets and home</h2>
+            </div>
+          </div>
+          <div class="profile-grid" id="profileGrid"></div>
+          <article class="home-profile">
+            <h3>Home details</h3>
+            <dl id="homeDetails"></dl>
+          </article>
+        </section>
+
+        <section class="view" id="emergencyView" aria-labelledby="emergencyTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Emergency</p>
+              <h2 id="emergencyTitle">Fast contacts</h2>
+            </div>
+          </div>
+          <div class="contact-list" id="contactList"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary">
+        <button class="nav-item active" data-view="todayView" type="button">
+          <span aria-hidden="true">OK</span>
+          Today
+        </button>
+        <button class="nav-item" data-view="calendarView" type="button">
+          <span aria-hidden="true">D</span>
+          Calendar
+        </button>
+        <button class="nav-item" data-view="profilesView" type="button">
+          <span aria-hidden="true">P</span>
+          Profiles
+        </button>
+        <button class="nav-item" data-view="emergencyView" type="button">
+          <span aria-hidden="true">!</span>
+          Emergency
+        </button>
+      </nav>
+    </div>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+    <script src="app-config.js?v=20260604-3"></script>
+    <script src="app.js?v=20260604-3"></script>
+  </body>
+</html>
