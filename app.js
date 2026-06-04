@@ -1,5 +1,6 @@
 const APP_CONFIG = window.APP_CONFIG;
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG;
+const SUPABASE_CONFIG = window.SUPABASE_CONFIG;
 const STORAGE_KEY = "pet-watcher-state-v2";
 const DEVICE_KEY = "pet-watcher-device-id";
 const channel = "BroadcastChannel" in window ? new BroadcastChannel("pet-watcher") : null;
@@ -72,6 +73,11 @@ function saveState(announce = true) {
 }
 
 async function connectRealtime() {
+  if (SUPABASE_CONFIG?.enabled) {
+    await connectSupabaseRealtime();
+    return;
+  }
+
   if (!FIREBASE_CONFIG.enabled || !FIREBASE_CONFIG.apiKey || !FIREBASE_CONFIG.projectId) {
     setSyncStatus("Local preview");
     return;
@@ -133,6 +139,100 @@ async function connectRealtime() {
     console.warn("Firebase realtime sync unavailable", error);
     setSyncStatus("Local fallback");
   }
+}
+
+async function connectSupabaseRealtime() {
+  if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey) {
+    setSyncStatus("Supabase config missing");
+    return;
+  }
+
+  if (!window.supabase?.createClient) {
+    setSyncStatus("Supabase script missing");
+    return;
+  }
+
+  try {
+    const supabase = window.supabase.createClient(
+      SUPABASE_CONFIG.url,
+      SUPABASE_CONFIG.anonKey
+    );
+
+    remoteSave = async (nextState) => {
+      const { error } = await supabase
+        .from(SUPABASE_CONFIG.tableName)
+        .upsert({
+          id: SUPABASE_CONFIG.tripId,
+          state: nextState,
+          updated_by: deviceId,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+    };
+
+    const { data, error } = await supabase
+      .from(SUPABASE_CONFIG.tableName)
+      .select("state")
+      .eq("id", SUPABASE_CONFIG.tripId)
+      .maybeSingle();
+
+    if (error) throw error;
+
+    if (data?.state) {
+      state = mergeRemoteState(data.state);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      render();
+    } else {
+      await remoteSave(state);
+    }
+
+    supabase
+      .channel(`pet-watcher-${SUPABASE_CONFIG.tripId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: SUPABASE_CONFIG.tableName,
+          filter: `id=eq.${SUPABASE_CONFIG.tripId}`
+        },
+        (payload) => {
+          const incoming = payload.new?.state;
+          if (!incoming) return;
+
+          const previous = state;
+          applyingRemoteUpdate = true;
+          state = mergeRemoteState(incoming);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          applyingRemoteUpdate = false;
+          render();
+
+          if (state.lastUpdatedBy !== deviceId) {
+            alertNewCompletions(previous.tasks, state.tasks);
+          }
+        }
+      )
+      .subscribe((status) => {
+        remoteReady = status === "SUBSCRIBED";
+        setSyncStatus(remoteReady ? "Live sync on" : "Connecting...");
+      });
+  } catch (error) {
+    console.warn("Supabase realtime sync unavailable", error);
+    setSyncStatus("Local fallback");
+  }
+}
+
+function mergeRemoteState(remoteState) {
+  return {
+    ...initialState(),
+    ...remoteState,
+    tasks: mergeTasks(APP_CONFIG.tasks, remoteState.tasks || []),
+    days: APP_CONFIG.days,
+    pets: APP_CONFIG.pets,
+    contacts: APP_CONFIG.contacts,
+    home: APP_CONFIG.home
+  };
 }
 
 function firebasePublicConfig() {

@@ -1,9 +1,5 @@
 window.FIREBASE_CONFIG = {
-  enabled: true,
-  url: "https://iulejldfhvzyqlijvxka.supabase.co",
-  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bGVqbGRmaHZ6eXFsaWp2eGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDMxNjEsImV4cCI6MjA5NjE3OTE2MX0.OE-J--0Dfo-YD9klQbaY-4Kv_zLTIAhd8wNbFn9pEAU
-",
-  tableName: "pet_watcher_trips",
+  enabled: false,
   tripId: "leone-weekend-trip",
   apiKey: "",
   authDomain: "",
@@ -13,6 +9,13 @@ window.FIREBASE_CONFIG = {
   appId: ""
 };
 
+window.SUPABASE_CONFIG = {
+  enabled: true,
+  url: "https://iulejldfhvzyqlijvxka.supabase.co",
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bGVqbGRmaHZ6eXFsaWp2eGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDMxNjEsImV4cCI6MjA5NjE3OTE2MX0.OE-J--0Dfo-YD9klQbaY-4Kv_zLTIAhd8wNbFn9pEAU",
+  tableName: "pet_watcher_trips",
+  tripId: "leone-weekend-trip"
+};
 window.APP_CONFIG = {
   householdName: "Leone House",
   tripLabel: "Weekend away",
