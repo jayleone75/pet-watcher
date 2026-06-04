@@ -334,7 +334,12 @@ function toggleTask(id) {
   state.tasks = state.tasks.map((task) => {
     if (task.id !== id) return task;
 
-    const complete = !task.complete;
+    if (task.complete) {
+      showToast(`${task.title} is already completed.`);
+      return task;
+    }
+
+    const complete = true;
     return {
       ...task,
       complete,
