@@ -10,7 +10,7 @@ Mobile-first weekend sitter dashboard for a single household.
 - Trip calendar and planner highlights
 - Pet profiles, home details, and emergency contacts
 - Local persistence through `localStorage`
-- Optional Supabase realtime sync
+- Supabase magic-link sign-in and realtime sync
 - In-app and browser notification alerts when another device completes a task
 
 ## Run
@@ -27,10 +27,13 @@ Edit `app-config.js` for:
 - Home instructions
 - Emergency contacts
 
-## Realtime Supabase setup
+## Realtime Supabase Auth Setup
 
 1. Create a Supabase project.
-2. In Supabase SQL Editor, run:
+2. In Supabase Authentication > URL Configuration, set:
+   - Site URL: your published app URL, for example `https://likepetwatcher.jayleone.ai`
+   - Redirect URLs: the same URL
+3. In Supabase SQL Editor, run this SQL. Replace the two example emails first.
 
 ```sql
 create table if not exists public.pet_watcher_trips (
@@ -40,33 +43,97 @@ create table if not exists public.pet_watcher_trips (
   updated_at timestamptz default now()
 );
 
-alter table public.pet_watcher_trips enable row level security;
+create table if not exists public.pet_watcher_trip_members (
+  trip_id text not null,
+  email text not null,
+  role text not null default 'sitter',
+  primary key (trip_id, email)
+);
 
-create policy "pet watcher public read"
+alter table public.pet_watcher_trips enable row level security;
+alter table public.pet_watcher_trip_members enable row level security;
+
+drop policy if exists "pet watcher public read" on public.pet_watcher_trips;
+drop policy if exists "pet watcher public insert" on public.pet_watcher_trips;
+drop policy if exists "pet watcher public update" on public.pet_watcher_trips;
+drop policy if exists "pet watcher invited read" on public.pet_watcher_trips;
+drop policy if exists "pet watcher invited insert" on public.pet_watcher_trips;
+drop policy if exists "pet watcher invited update" on public.pet_watcher_trips;
+drop policy if exists "pet watcher member self read" on public.pet_watcher_trip_members;
+
+insert into public.pet_watcher_trip_members (trip_id, email, role)
+values
+  ('leone-weekend-trip', 'your-email@example.com', 'owner'),
+  ('leone-weekend-trip', 'neighbor-email@example.com', 'sitter')
+on conflict (trip_id, email) do update set role = excluded.role;
+
+create policy "pet watcher invited read"
 on public.pet_watcher_trips
 for select
-using (true);
+to authenticated
+using (
+  exists (
+    select 1
+    from public.pet_watcher_trip_members member
+    where member.trip_id = pet_watcher_trips.id
+      and lower(member.email) = lower(auth.jwt() ->> 'email')
+  )
+);
 
-create policy "pet watcher public insert"
+create policy "pet watcher invited insert"
 on public.pet_watcher_trips
 for insert
-with check (true);
+to authenticated
+with check (
+  exists (
+    select 1
+    from public.pet_watcher_trip_members member
+    where member.trip_id = pet_watcher_trips.id
+      and lower(member.email) = lower(auth.jwt() ->> 'email')
+  )
+);
 
-create policy "pet watcher public update"
+create policy "pet watcher invited update"
 on public.pet_watcher_trips
 for update
-using (true)
-with check (true);
+to authenticated
+using (
+  exists (
+    select 1
+    from public.pet_watcher_trip_members member
+    where member.trip_id = pet_watcher_trips.id
+      and lower(member.email) = lower(auth.jwt() ->> 'email')
+  )
+)
+with check (
+  exists (
+    select 1
+    from public.pet_watcher_trip_members member
+    where member.trip_id = pet_watcher_trips.id
+      and lower(member.email) = lower(auth.jwt() ->> 'email')
+  )
+);
 
-alter publication supabase_realtime add table public.pet_watcher_trips;
+create policy "pet watcher member self read"
+on public.pet_watcher_trip_members
+for select
+to authenticated
+using (lower(email) = lower(auth.jwt() ->> 'email'));
+
+do $$
+begin
+  alter publication supabase_realtime add table public.pet_watcher_trips;
+exception
+  when duplicate_object then null;
+end $$;
 ```
 
-3. In Supabase Project Settings > API, copy the Project URL and anon public key.
-4. Paste those into `SUPABASE_CONFIG` in `app-config.js`.
-5. Set `enabled: true`.
-6. Commit and push the changes to GitHub Pages.
-7. Open the published app on two devices. When the sitter marks a task complete, the owner view updates and shows an alert.
+4. In Supabase Project Settings > API, copy the Project URL and anon public key.
+5. Paste those into `SUPABASE_CONFIG` in `app-config.js`.
+6. Set `enabled: true`.
+7. Commit and push the changes to GitHub Pages.
+8. Open the published app and sign in with an invited email.
+
+Anyone can request a magic link, but only emails listed in `pet_watcher_trip_members` can read or update this trip.
 
 For browser notifications, tap the `A` button in the header and allow notifications.
-
-The SQL above is a simple weekend setup. Anyone with the site can read/update the trip row, so avoid adding private door codes or sensitive home details until auth is added.

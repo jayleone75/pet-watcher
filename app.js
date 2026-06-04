@@ -10,12 +10,100 @@ let state = loadState();
 let remoteReady = false;
 let remoteSave = null;
 let applyingRemoteUpdate = false;
+let supabaseClient = null;
+let currentUser = null;
+let realtimeStarted = false;
 let lastAlertedCompletions = new Set(
   state.tasks.filter((task) => task.complete).map((task) => task.id)
 );
 
-render();
-connectRealtime();
+bootstrap();
+
+async function bootstrap() {
+  wireAuthControls();
+
+  if (SUPABASE_CONFIG?.enabled) {
+    if (!setupSupabaseClient()) {
+      showAuth("Supabase is not configured correctly.");
+      return;
+    }
+
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        currentUser = session.user;
+        enterApp();
+      } else if (event === "SIGNED_OUT") {
+        currentUser = null;
+        showAuth("Signed out.");
+      }
+    });
+
+    const { data, error } = await supabaseClient.auth.getUser();
+    if (error || !data?.user) {
+      showAuth("");
+      return;
+    }
+
+    currentUser = data.user;
+  }
+
+  enterApp();
+}
+
+function setupSupabaseClient() {
+  if (supabaseClient) return true;
+
+  if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey || !window.supabase?.createClient) {
+    return false;
+  }
+
+  supabaseClient = window.supabase.createClient(
+    SUPABASE_CONFIG.url,
+    SUPABASE_CONFIG.anonKey
+  );
+  return true;
+}
+
+function enterApp() {
+  document.body.classList.remove("auth-required");
+  document.getElementById("authScreen").classList.remove("active");
+  render();
+  if (!realtimeStarted) {
+    realtimeStarted = true;
+    connectRealtime();
+  }
+}
+
+function showAuth(message) {
+  document.body.classList.add("auth-required");
+  document.getElementById("authScreen").classList.add("active");
+  document.getElementById("authMessage").textContent = message;
+}
+
+function wireAuthControls() {
+  const form = document.getElementById("authForm");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!setupSupabaseClient()) {
+      showAuth("Supabase is not configured correctly.");
+      return;
+    }
+
+    const email = String(new FormData(form).get("email") || "").trim();
+    const redirectTo = window.location.href.split("#")[0];
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: redirectTo
+      }
+    });
+
+    document.getElementById("authMessage").textContent = error
+      ? error.message
+      : "Magic link sent. Check your email, then return here.";
+  });
+}
 
 function getDeviceId() {
   const existing = localStorage.getItem(DEVICE_KEY);
@@ -147,19 +235,14 @@ async function connectSupabaseRealtime() {
     return;
   }
 
-  if (!window.supabase?.createClient) {
+  if (!setupSupabaseClient()) {
     setSyncStatus("Supabase script missing");
     return;
   }
 
   try {
-    const supabase = window.supabase.createClient(
-      SUPABASE_CONFIG.url,
-      SUPABASE_CONFIG.anonKey
-    );
-
     remoteSave = async (nextState) => {
-      const { error } = await supabase
+      const { error } = await supabaseClient
         .from(SUPABASE_CONFIG.tableName)
         .upsert({
           id: SUPABASE_CONFIG.tripId,
@@ -171,7 +254,7 @@ async function connectSupabaseRealtime() {
       if (error) throw error;
     };
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from(SUPABASE_CONFIG.tableName)
       .select("state")
       .eq("id", SUPABASE_CONFIG.tripId)
@@ -187,7 +270,7 @@ async function connectSupabaseRealtime() {
       await remoteSave(state);
     }
 
-    supabase
+    supabaseClient
       .channel(`pet-watcher-${SUPABASE_CONFIG.tripId}`)
       .on(
         "postgres_changes",
@@ -219,7 +302,8 @@ async function connectSupabaseRealtime() {
       });
   } catch (error) {
     console.warn("Supabase realtime sync unavailable", error);
-    setSyncStatus("Local fallback");
+    setSyncStatus("Access denied or offline");
+    showToast("Could not connect to the private trip.");
   }
 }
 
@@ -507,6 +591,10 @@ document.getElementById("notificationButton").addEventListener("click", async ()
 
   const result = await Notification.requestPermission();
   showToast(result === "granted" ? "Completion alerts are on." : "Completion alerts are off.");
+});
+
+document.getElementById("signOutButton").addEventListener("click", async () => {
+  if (supabaseClient) await supabaseClient.auth.signOut();
 });
 
 if (channel) {
