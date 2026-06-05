@@ -5,10 +5,12 @@ const PASSCODE_CONFIG = window.PASSCODE_CONFIG || { enabled: false };
 const STORAGE_KEY = "pet-watcher-state-v2";
 const DEVICE_KEY = "pet-watcher-device-id";
 const PASSCODE_UNLOCK_KEY = "pet-watcher-passcode-unlocked";
+const PASSCODE_ROLE_KEY = "pet-watcher-passcode-role";
 const channel = "BroadcastChannel" in window ? new BroadcastChannel("pet-watcher") : null;
 const deviceId = getDeviceId();
 
 let state = loadState();
+let currentRole = localStorage.getItem(PASSCODE_ROLE_KEY) || (PASSCODE_CONFIG.enabled ? "" : "owner");
 let remoteReady = false;
 let remoteSave = null;
 let applyingRemoteUpdate = false;
@@ -23,7 +25,10 @@ bootstrap();
 async function bootstrap() {
   wirePasscodeControls();
 
-  if (PASSCODE_CONFIG.enabled && localStorage.getItem(PASSCODE_UNLOCK_KEY) !== "true") {
+  if (
+    PASSCODE_CONFIG.enabled &&
+    (localStorage.getItem(PASSCODE_UNLOCK_KEY) !== "true" || !currentRole)
+  ) {
     showAuth("");
     return;
   }
@@ -67,18 +72,28 @@ function wirePasscodeControls() {
     event.preventDefault();
 
     const entered = String(new FormData(form).get("passcode") || "").trim();
-    if (entered !== PASSCODE_CONFIG.passcode) {
+    const matchedRole = getRoleForPasscode(entered);
+    if (!matchedRole) {
       document.getElementById("authMessage").textContent = "That passcode did not work.";
       return;
     }
 
+    currentRole = matchedRole;
     if (PASSCODE_CONFIG.rememberDevice) {
       localStorage.setItem(PASSCODE_UNLOCK_KEY, "true");
+      localStorage.setItem(PASSCODE_ROLE_KEY, currentRole);
     }
 
     form.reset();
     enterApp();
   });
+}
+
+function getRoleForPasscode(passcode) {
+  if (passcode === PASSCODE_CONFIG.ownerPasscode) return "owner";
+  if (passcode === PASSCODE_CONFIG.sitterPasscode) return "sitter";
+  if (passcode === PASSCODE_CONFIG.passcode) return "sitter";
+  return "";
 }
 
 function getDeviceId() {
@@ -93,7 +108,6 @@ function getDeviceId() {
 function initialState() {
   return {
     ...structuredClone(APP_CONFIG),
-    role: "owner",
     selectedDay: APP_CONFIG.days[0]?.id || "today",
     lastUpdatedBy: deviceId,
     lastUpdatedAt: new Date().toISOString()
@@ -130,6 +144,7 @@ function mergeTasks(configTasks, savedTasks) {
 function saveState(announce = true) {
   state.lastUpdatedBy = deviceId;
   state.lastUpdatedAt = new Date().toISOString();
+  delete state.role;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 
   if (announce && channel) channel.postMessage(state);
@@ -322,8 +337,9 @@ function render() {
 }
 
 function renderRole() {
-  document.querySelectorAll(".role-option").forEach((button) => {
-    button.classList.toggle("active", button.dataset.role === state.role);
+  document.getElementById("roleBadge").textContent = currentRole === "owner" ? "Owner" : "Sitter";
+  document.querySelectorAll(".owner-only").forEach((element) => {
+    element.hidden = currentRole !== "owner";
   });
 }
 
@@ -390,7 +406,7 @@ function renderTasks() {
 }
 
 function toggleTask(id) {
-  const actor = state.role === "sitter" ? state.sitterName : state.ownerNames;
+  const actor = currentRole === "sitter" ? state.sitterName : state.ownerNames;
   state.tasks = state.tasks.map((task) => {
     if (task.id !== id) return task;
 
@@ -545,18 +561,28 @@ document.querySelectorAll(".nav-item").forEach((button) => {
   button.addEventListener("click", () => showView(button.dataset.view));
 });
 
-document.querySelectorAll(".role-option").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.role = button.dataset.role;
-    saveState();
-    renderRole();
-  });
-});
-
 document.getElementById("syncButton").addEventListener("click", () => {
   saveState();
   render();
   showToast(remoteReady ? "Live data refreshed." : "Local data refreshed.");
+});
+
+document.getElementById("resetButton").addEventListener("click", () => {
+  if (currentRole !== "owner") return;
+
+  const confirmed = window.confirm("Clear all completed task checks for this trip?");
+  if (!confirmed) return;
+
+  state.tasks = state.tasks.map((task) => ({
+    ...task,
+    complete: false,
+    completedBy: "",
+    completedAt: ""
+  }));
+  lastAlertedCompletions = new Set();
+  saveState();
+  render();
+  showToast("All task checks were cleared.");
 });
 
 document.getElementById("notificationButton").addEventListener("click", async () => {
@@ -571,6 +597,8 @@ document.getElementById("notificationButton").addEventListener("click", async ()
 
 document.getElementById("signOutButton").addEventListener("click", async () => {
   localStorage.removeItem(PASSCODE_UNLOCK_KEY);
+  localStorage.removeItem(PASSCODE_ROLE_KEY);
+  currentRole = "";
   showAuth("Locked.");
 });
 

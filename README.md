@@ -5,6 +5,8 @@ Mobile-first weekend sitter dashboard for a single household.
 ## What is included
 
 - Passcode-gated sitter dashboard
+- Separate owner and sitter passcodes
+- Owner-only reset for clearing completed task checks
 - Today checklist grouped by Morning, Afternoon, and Evening
 - Tap-to-complete task tracking with progress
 - Cross-tab syncing through `BroadcastChannel`
@@ -22,7 +24,7 @@ Open `index.html` in a browser. No build step is required.
 
 Edit `app-config.js` for:
 
-- Weekend passcode in `PASSCODE_CONFIG`
+- Owner and sitter passcodes in `PASSCODE_CONFIG`
 - Weekend dates and labels
 - Animal profiles
 - Checklist tasks
@@ -86,4 +88,4 @@ end $$;
 
 For browser notifications, tap the `A` button in the header and allow notifications.
 
-This passcode version is intentionally simple. The passcode lives in the static app files, so it is a casual gate for a trusted sitter link, not strong authentication.
+The owner passcode opens owner mode and shows the clear/reset button. The sitter passcode opens sitter mode. This passcode version is intentionally simple. The passcodes live in the static app files, so this is a casual gate for a trusted sitter link, not strong authentication.

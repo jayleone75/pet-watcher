@@ -221,30 +221,17 @@ button {
   color: var(--accent-strong);
 }
 
-.role-switch {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-width: 152px;
-  padding: 3px;
+.role-badge {
+  display: inline-grid;
+  min-width: 86px;
+  min-height: 34px;
+  place-items: center;
+  padding: 0 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface-strong);
-}
-
-.role-option {
-  min-height: 34px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.role-option.active {
-  background: var(--surface);
   color: var(--accent-strong);
   font-weight: 800;
-  box-shadow: 0 4px 10px rgba(23, 107, 85, 0.12);
 }
 
 .view {
@@ -662,8 +649,7 @@ button {
   .task-row:hover,
   .calendar-cell:hover,
   .icon-button:hover,
-  .nav-item:hover,
-  .role-option:hover {
+  .nav-item:hover {
     filter: brightness(0.98);
   }
 }
@@ -674,7 +660,7 @@ button {
     flex-direction: column;
   }
 
-  .role-switch {
+  .role-badge {
     width: 100%;
   }
 

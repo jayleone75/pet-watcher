@@ -19,7 +19,8 @@ window.SUPABASE_CONFIG = {
 
 window.PASSCODE_CONFIG = {
   enabled: true,
-  passcode: "rocketlola",
+  ownerPasscode: "ownerrocket",
+  sitterPasscode: "rocketlola",
   rememberDevice: true
 };
 window.APP_CONFIG = {
