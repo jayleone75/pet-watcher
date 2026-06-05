@@ -16,6 +16,12 @@ window.SUPABASE_CONFIG = {
   tableName: "pet_watcher_trips",
   tripId: "leone-weekend-trip"
 };
+
+window.PASSCODE_CONFIG = {
+  enabled: true,
+  passcode: "rocketlola",
+  rememberDevice: true
+};
 window.APP_CONFIG = {
   householdName: "Leone House",
   tripLabel: "Weekend away",

@@ -1,8 +1,10 @@
 const APP_CONFIG = window.APP_CONFIG;
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG;
 const SUPABASE_CONFIG = window.SUPABASE_CONFIG;
+const PASSCODE_CONFIG = window.PASSCODE_CONFIG || { enabled: false };
 const STORAGE_KEY = "pet-watcher-state-v2";
 const DEVICE_KEY = "pet-watcher-device-id";
+const PASSCODE_UNLOCK_KEY = "pet-watcher-passcode-unlocked";
 const channel = "BroadcastChannel" in window ? new BroadcastChannel("pet-watcher") : null;
 const deviceId = getDeviceId();
 
@@ -11,7 +13,6 @@ let remoteReady = false;
 let remoteSave = null;
 let applyingRemoteUpdate = false;
 let supabaseClient = null;
-let currentUser = null;
 let realtimeStarted = false;
 let lastAlertedCompletions = new Set(
   state.tasks.filter((task) => task.complete).map((task) => task.id)
@@ -20,31 +21,11 @@ let lastAlertedCompletions = new Set(
 bootstrap();
 
 async function bootstrap() {
-  wireAuthControls();
+  wirePasscodeControls();
 
-  if (SUPABASE_CONFIG?.enabled) {
-    if (!setupSupabaseClient()) {
-      showAuth("Supabase is not configured correctly.");
-      return;
-    }
-
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-      if (session?.user) {
-        currentUser = session.user;
-        enterApp();
-      } else if (event === "SIGNED_OUT") {
-        currentUser = null;
-        showAuth("Signed out.");
-      }
-    });
-
-    const { data, error } = await supabaseClient.auth.getUser();
-    if (error || !data?.user) {
-      showAuth("");
-      return;
-    }
-
-    currentUser = data.user;
+  if (PASSCODE_CONFIG.enabled && localStorage.getItem(PASSCODE_UNLOCK_KEY) !== "true") {
+    showAuth("");
+    return;
   }
 
   enterApp();
@@ -80,28 +61,23 @@ function showAuth(message) {
   document.getElementById("authMessage").textContent = message;
 }
 
-function wireAuthControls() {
+function wirePasscodeControls() {
   const form = document.getElementById("authForm");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!setupSupabaseClient()) {
-      showAuth("Supabase is not configured correctly.");
+    const entered = String(new FormData(form).get("passcode") || "").trim();
+    if (entered !== PASSCODE_CONFIG.passcode) {
+      document.getElementById("authMessage").textContent = "That passcode did not work.";
       return;
     }
 
-    const email = String(new FormData(form).get("email") || "").trim();
-    const redirectTo = window.location.href.split("#")[0];
-    const { error } = await supabaseClient.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: redirectTo
-      }
-    });
+    if (PASSCODE_CONFIG.rememberDevice) {
+      localStorage.setItem(PASSCODE_UNLOCK_KEY, "true");
+    }
 
-    document.getElementById("authMessage").textContent = error
-      ? error.message
-      : "Magic link sent. Check your email, then return here.";
+    form.reset();
+    enterApp();
   });
 }
 
@@ -594,7 +570,8 @@ document.getElementById("notificationButton").addEventListener("click", async ()
 });
 
 document.getElementById("signOutButton").addEventListener("click", async () => {
-  if (supabaseClient) await supabaseClient.auth.signOut();
+  localStorage.removeItem(PASSCODE_UNLOCK_KEY);
+  showAuth("Locked.");
 });
 
 if (channel) {
