@@ -14,7 +14,7 @@ window.SUPABASE_CONFIG = {
   url: "https://iulejldfhvzyqlijvxka.supabase.co",
   anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bGVqbGRmaHZ6eXFsaWp2eGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDMxNjEsImV4cCI6MjA5NjE3OTE2MX0.OE-J--0Dfo-YD9klQbaY-4Kv_zLTIAhd8wNbFn9pEAU",
   tableName: "pet_watcher_trips",
-  tripId: "leone-weekend-trip"
+  tripId: "leone-july-2026-trip"
 };
 
 window.PASSCODE_CONFIG = {
@@ -25,32 +25,37 @@ window.PASSCODE_CONFIG = {
 };
 window.APP_CONFIG = {
   householdName: "Leone House",
-  tripLabel: "Weekend away",
-  dateRange: "Short weekend",
-  calendarTitle: "Weekend Plan",
+  tripLabel: "July vacation",
+  dateRange: "Sat, Jul 18 - Sat, Jul 25",
+  calendarTitle: "July 18-25 Plan",
   ownerNames: "Jay and family",
   sitterName: "Neighbor",
   ownerNote:
-    "Thanks again for watching everyone. The dogs have a dog door, so no walks or potty checks are needed. The main thing is food twice a day and fresh water.",
+    "Thanks again for watching everyone. We are away Saturday July 18 through Saturday July 25. Care starts the evening of the 18th and runs through the evening of the 25th. The dogs have a dog door, so no walks or potty checks are needed. The main thing is food twice a day and fresh water.",
   days: [
-    { id: "friday", label: "Friday", active: true },
-    { id: "saturday", label: "Saturday", active: true },
-    { id: "sunday", label: "Sunday", active: true }
+    { id: "jul-18", label: "Sat 18", active: true },
+    { id: "jul-19", label: "Sun 19", active: true },
+    { id: "jul-20", label: "Mon 20", active: true },
+    { id: "jul-21", label: "Tue 21", active: true },
+    { id: "jul-22", label: "Wed 22", active: true },
+    { id: "jul-23", label: "Thu 23", active: true },
+    { id: "jul-24", label: "Fri 24", active: true },
+    { id: "jul-25", label: "Sat 25", active: true }
   ],
   tasks: [
     {
-      id: "fri-dogs-dinner",
-      day: "friday",
+      id: "jul18-dogs-dinner",
+      day: "jul-18",
       period: "Evening",
       time: "Evening",
       title: "Feed Rocket and Lola",
-      detail: "Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office next to Rocket's bowl.",
+      detail: "First feeding of the trip. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office next to Rocket's bowl.",
       priority: true,
       complete: false
     },
     {
-      id: "fri-water",
-      day: "friday",
+      id: "jul18-water",
+      day: "jul-18",
       period: "Evening",
       time: "Evening",
       title: "Quick water check",
@@ -59,8 +64,8 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "sat-dogs-breakfast",
-      day: "saturday",
+      id: "jul19-dogs-breakfast",
+      day: "jul-19",
       period: "Morning",
       time: "Morning",
       title: "Feed Rocket and Lola",
@@ -69,18 +74,8 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "sat-queso-roaches",
-      day: "saturday",
-      period: "Morning",
-      time: "Morning",
-      title: "Feed Queso",
-      detail: "Give Queso the bearded dragon about 6 roaches when you feed the dogs. He already had fresh vegetables Friday.",
-      priority: true,
-      complete: false
-    },
-    {
-      id: "sat-dogs-dinner",
-      day: "saturday",
+      id: "jul19-dogs-dinner",
+      day: "jul-19",
       period: "Evening",
       time: "Evening",
       title: "Feed Rocket and Lola",
@@ -89,22 +84,132 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "sun-dogs-breakfast",
-      day: "sunday",
+      id: "jul20-dogs-breakfast",
+      day: "jul-20",
       period: "Morning",
       time: "Morning",
       title: "Feed Rocket and Lola",
-      detail: "Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office next to Rocket's bowl.",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "sun-water-final",
-      day: "sunday",
-      period: "Afternoon",
-      time: "Before leaving",
+      id: "jul20-dogs-dinner",
+      day: "jul-20",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul21-dogs-breakfast",
+      day: "jul-21",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul21-dogs-dinner",
+      day: "jul-21",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul22-dogs-breakfast",
+      day: "jul-22",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul22-dogs-dinner",
+      day: "jul-22",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul23-dogs-breakfast",
+      day: "jul-23",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul23-dogs-dinner",
+      day: "jul-23",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul24-dogs-breakfast",
+      day: "jul-24",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul24-dogs-dinner",
+      day: "jul-24",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul25-dogs-breakfast",
+      day: "jul-25",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Rocket and Lola",
+      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul25-dogs-dinner",
+      day: "jul-25",
+      period: "Evening",
+      time: "Evening",
+      title: "Feed Rocket and Lola",
+      detail: "Last feeding of the trip. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul25-water-final",
+      day: "jul-25",
+      period: "Evening",
+      time: "Evening",
       title: "Final water check",
-      detail: "Make sure the dog water is clean and full. Tater Tot does not need anything this weekend.",
+      detail: "Make sure the dog water is clean and full before you head out.",
       priority: false,
       complete: false
     }
@@ -120,25 +225,25 @@ window.APP_CONFIG = {
     },
     {
       name: "Lola",
-      type: "3 year old pug",
+      type: "4 year old pug",
       note: "Has access to the dog door. No walks or potty checks needed. Feed one scoop from the dog food jar in the kitchen. Please keep an eye out in case she pees or poops in the house, and clean it up if you spot anything.",
-      tags: ["3 years old", "One scoop", "Kitchen food jar", "Watch for accidents"],
+      tags: ["4 years old", "One scoop", "Kitchen food jar", "Watch for accidents"],
       photo: "assets/lola.jpg",
       bg: "linear-gradient(135deg, #d6b18a, #7f5f48)"
     },
     {
       name: "Tater Tot",
       type: "Axolotl",
-      note: "Does not need anything this weekend. She will be fed before the family leaves.",
-      tags: ["No weekend care", "Already fed", "Axolotl"],
+      note: "Care instructions for this trip are coming soon. Jay will update feeding details before the trip starts.",
+      tags: ["Axolotl", "Instructions coming"],
       photo: "assets/tater-tot.jpg",
       bg: "linear-gradient(135deg, #f5c6d6, #8fc7d7)"
     },
     {
       name: "Queso",
       type: "Bearded dragon",
-      note: "Fresh vegetables and Friday feeding will be handled before the family leaves. On Saturday morning, give him about 6 roaches when feeding the dogs.",
-      tags: ["Saturday only", "About 6 roaches", "Fresh vegetables Friday"],
+      note: "Care instructions for this trip are coming soon. Jay will update feeding details before the trip starts.",
+      tags: ["Bearded dragon", "Instructions coming"],
       photo: "assets/queso.jpg",
       bg: "linear-gradient(135deg, #d8b052, #8c9b4a)"
     }

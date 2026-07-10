@@ -127,11 +127,17 @@ function loadState() {
       days: APP_CONFIG.days,
       pets: APP_CONFIG.pets,
       contacts: APP_CONFIG.contacts,
-      home: APP_CONFIG.home
+      home: APP_CONFIG.home,
+      selectedDay: normalizeSelectedDay(parsed.selectedDay)
     };
   } catch {
     return initialState();
   }
+}
+
+function normalizeSelectedDay(dayId) {
+  const valid = APP_CONFIG.days.some((day) => day.id === dayId);
+  return valid ? dayId : APP_CONFIG.days[0]?.id || "today";
 }
 
 function mergeTasks(configTasks, savedTasks) {
@@ -306,7 +312,8 @@ function mergeRemoteState(remoteState) {
     days: APP_CONFIG.days,
     pets: APP_CONFIG.pets,
     contacts: APP_CONFIG.contacts,
-    home: APP_CONFIG.home
+    home: APP_CONFIG.home,
+    selectedDay: normalizeSelectedDay(remoteState.selectedDay)
   };
 }
 
