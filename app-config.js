@@ -74,6 +74,36 @@ window.APP_CONFIG = {
       complete: false
     },
     {
+      id: "jul19-queso-veggies",
+      day: "jul-19",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul19-queso-cage",
+      day: "jul-19",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul19-queso-insects",
+      day: "jul-19",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
+      priority: true,
+      complete: false
+    },
+    {
       id: "jul19-dogs-dinner",
       day: "jul-19",
       period: "Evening",
@@ -90,6 +120,46 @@ window.APP_CONFIG = {
       time: "Morning",
       title: "Feed Rocket and Lola",
       detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul20-queso-veggies",
+      day: "jul-20",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul20-queso-cage",
+      day: "jul-20",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul20-queso-insects",
+      day: "jul-20",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul20-tater-worm",
+      day: "jul-20",
+      period: "Morning",
+      time: "Anytime",
+      title: "Offer Tater Tot a worm",
+      detail: "Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away - just leave it in the tank.",
       priority: true,
       complete: false
     },
@@ -114,6 +184,46 @@ window.APP_CONFIG = {
       complete: false
     },
     {
+      id: "jul21-queso-veggies",
+      day: "jul-21",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul21-queso-cage",
+      day: "jul-21",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul21-queso-insects",
+      day: "jul-21",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul21-tater-worm-check",
+      day: "jul-21",
+      period: "Morning",
+      time: "Anytime",
+      title: "Check Tater Tot's tank",
+      detail: "If you still see Monday's worm floating around in the tank, please remove it.",
+      priority: false,
+      complete: false
+    },
+    {
       id: "jul21-dogs-dinner",
       day: "jul-21",
       period: "Evening",
@@ -130,6 +240,36 @@ window.APP_CONFIG = {
       time: "Morning",
       title: "Feed Rocket and Lola",
       detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul22-queso-veggies",
+      day: "jul-22",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul22-queso-cage",
+      day: "jul-22",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul22-queso-insects",
+      day: "jul-22",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
       priority: true,
       complete: false
     },
@@ -154,6 +294,46 @@ window.APP_CONFIG = {
       complete: false
     },
     {
+      id: "jul23-queso-veggies",
+      day: "jul-23",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul23-queso-cage",
+      day: "jul-23",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul23-queso-insects",
+      day: "jul-23",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul23-tater-worm",
+      day: "jul-23",
+      period: "Morning",
+      time: "Anytime",
+      title: "Offer Tater Tot a worm",
+      detail: "Second try. Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away - just leave it in the tank.",
+      priority: true,
+      complete: false
+    },
+    {
       id: "jul23-dogs-dinner",
       day: "jul-23",
       period: "Evening",
@@ -174,6 +354,46 @@ window.APP_CONFIG = {
       complete: false
     },
     {
+      id: "jul24-queso-veggies",
+      day: "jul-24",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul24-queso-cage",
+      day: "jul-24",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul24-queso-insects",
+      day: "jul-24",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul24-tater-worm-check",
+      day: "jul-24",
+      period: "Morning",
+      time: "Anytime",
+      title: "Check Tater Tot's tank",
+      detail: "If you still see Thursday's worm floating around in the tank, please remove it.",
+      priority: false,
+      complete: false
+    },
+    {
       id: "jul24-dogs-dinner",
       day: "jul-24",
       period: "Evening",
@@ -190,6 +410,36 @@ window.APP_CONFIG = {
       time: "Morning",
       title: "Feed Rocket and Lola",
       detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul25-queso-veggies",
+      day: "jul-25",
+      period: "Morning",
+      time: "Morning",
+      title: "Feed Queso veggies and berries",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      priority: true,
+      complete: false
+    },
+    {
+      id: "jul25-queso-cage",
+      day: "jul-25",
+      period: "Morning",
+      time: "Morning",
+      title: "Check Queso's cage",
+      detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
+      priority: false,
+      complete: false
+    },
+    {
+      id: "jul25-queso-insects",
+      day: "jul-25",
+      period: "Afternoon",
+      time: "Midday",
+      title: "Feed Queso roaches or superworms",
+      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
       priority: true,
       complete: false
     },
@@ -234,16 +484,16 @@ window.APP_CONFIG = {
     {
       name: "Tater Tot",
       type: "Axolotl",
-      note: "Care instructions for this trip are coming soon. Jay will update feeding details before the trip starts.",
-      tags: ["Axolotl", "Instructions coming"],
+      note: "Only needs food offered a couple of times during the trip - Monday and Thursday. Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away, but if the worm is still floating in the tank the next day, please remove it.",
+      tags: ["Worm Mon and Thu", "Rinse, use tweezers", "Remove uneaten worm next day"],
       photo: "assets/tater-tot.jpg",
       bg: "linear-gradient(135deg, #f5c6d6, #8fc7d7)"
     },
     {
       name: "Queso",
       type: "Bearded dragon",
-      note: "Care instructions for this trip are coming soon. Jay will update feeding details before the trip starts.",
-      tags: ["Bearded dragon", "Instructions coming"],
+      note: "Daily: a small handful of the cut-up vegetables and berries from the fridge (remove the old ones), plus 5 to 6 roaches or superworms around midday so he has time to bask and digest. Check the tank for poop - doggy bags are next to the tank; take it out with a handful of the surrounding sand, no need to be perfect. Heat lamp and lights are automatic. If a bulb burns out, just let Jay know and we can swap in a new one.",
+      tags: ["Veggies and berries daily", "5-6 roaches midday", "Scoop poop", "Lights automatic"],
       photo: "assets/queso.jpg",
       bg: "linear-gradient(135deg, #d8b052, #8c9b4a)"
     }
