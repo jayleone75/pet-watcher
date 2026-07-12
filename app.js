@@ -123,16 +123,29 @@ function loadState() {
     return {
       ...initialState(),
       ...parsed,
+      ...configOwnedFields(),
       tasks: mergeTasks(APP_CONFIG.tasks, parsed.tasks || []),
-      days: APP_CONFIG.days,
-      pets: APP_CONFIG.pets,
-      contacts: APP_CONFIG.contacts,
-      home: APP_CONFIG.home,
       selectedDay: normalizeSelectedDay(parsed.selectedDay)
     };
   } catch {
     return initialState();
   }
+}
+
+function configOwnedFields() {
+  return {
+    householdName: APP_CONFIG.householdName,
+    tripLabel: APP_CONFIG.tripLabel,
+    dateRange: APP_CONFIG.dateRange,
+    calendarTitle: APP_CONFIG.calendarTitle,
+    ownerNames: APP_CONFIG.ownerNames,
+    sitterName: APP_CONFIG.sitterName,
+    ownerNote: APP_CONFIG.ownerNote,
+    days: APP_CONFIG.days,
+    pets: APP_CONFIG.pets,
+    contacts: APP_CONFIG.contacts,
+    home: APP_CONFIG.home
+  };
 }
 
 function normalizeSelectedDay(dayId) {
@@ -308,11 +321,8 @@ function mergeRemoteState(remoteState) {
   return {
     ...initialState(),
     ...remoteState,
+    ...configOwnedFields(),
     tasks: mergeTasks(APP_CONFIG.tasks, remoteState.tasks || []),
-    days: APP_CONFIG.days,
-    pets: APP_CONFIG.pets,
-    contacts: APP_CONFIG.contacts,
-    home: APP_CONFIG.home,
     selectedDay: normalizeSelectedDay(remoteState.selectedDay)
   };
 }
