@@ -67,19 +67,19 @@ window.APP_CONFIG = {
       id: "jul19-dogs-breakfast",
       day: "jul-19",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul19-queso-veggies",
+      id: "jul19-queso-feeding",
       day: "jul-19",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -91,16 +91,6 @@ window.APP_CONFIG = {
       title: "Check Queso's cage",
       detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
       priority: false,
-      complete: false
-    },
-    {
-      id: "jul19-queso-insects",
-      day: "jul-19",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
       complete: false
     },
     {
@@ -117,19 +107,19 @@ window.APP_CONFIG = {
       id: "jul20-dogs-breakfast",
       day: "jul-20",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul20-queso-veggies",
+      id: "jul20-queso-feeding",
       day: "jul-20",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -144,22 +134,12 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "jul20-queso-insects",
-      day: "jul-20",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
-      complete: false
-    },
-    {
       id: "jul20-tater-worm",
       day: "jul-20",
       period: "Morning",
       time: "Anytime",
-      title: "Offer Tater Tot a worm",
-      detail: "Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away - just leave it in the tank.",
+      title: "Feed Tater Tot red worms",
+      detail: "Give her 3 to 4 red worms - only the ones in the small round cup, that is the only food she is eating reliably right now. Grab each worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat right away - just leave them in the tank.",
       priority: true,
       complete: false
     },
@@ -177,19 +157,19 @@ window.APP_CONFIG = {
       id: "jul21-dogs-breakfast",
       day: "jul-21",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul21-queso-veggies",
+      id: "jul21-queso-feeding",
       day: "jul-21",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -204,22 +184,12 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "jul21-queso-insects",
-      day: "jul-21",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
-      complete: false
-    },
-    {
       id: "jul21-tater-worm-check",
       day: "jul-21",
       period: "Morning",
       time: "Anytime",
       title: "Check Tater Tot's tank",
-      detail: "If you still see Monday's worm floating around in the tank, please remove it.",
+      detail: "If you still see any of Monday's worms floating around in the tank, please remove them.",
       priority: false,
       complete: false
     },
@@ -237,19 +207,19 @@ window.APP_CONFIG = {
       id: "jul22-dogs-breakfast",
       day: "jul-22",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul22-queso-veggies",
+      id: "jul22-queso-feeding",
       day: "jul-22",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -261,16 +231,6 @@ window.APP_CONFIG = {
       title: "Check Queso's cage",
       detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
       priority: false,
-      complete: false
-    },
-    {
-      id: "jul22-queso-insects",
-      day: "jul-22",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
       complete: false
     },
     {
@@ -287,19 +247,19 @@ window.APP_CONFIG = {
       id: "jul23-dogs-breakfast",
       day: "jul-23",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul23-queso-veggies",
+      id: "jul23-queso-feeding",
       day: "jul-23",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -314,22 +274,12 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "jul23-queso-insects",
-      day: "jul-23",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
-      complete: false
-    },
-    {
       id: "jul23-tater-worm",
       day: "jul-23",
       period: "Morning",
       time: "Anytime",
-      title: "Offer Tater Tot a worm",
-      detail: "Second try. Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away - just leave it in the tank.",
+      title: "Feed Tater Tot red worms",
+      detail: "Second feeding. Give her 3 to 4 red worms - only the ones in the small round cup, that is the only food she is eating reliably right now. Grab each worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat right away - just leave them in the tank.",
       priority: true,
       complete: false
     },
@@ -347,19 +297,19 @@ window.APP_CONFIG = {
       id: "jul24-dogs-breakfast",
       day: "jul-24",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul24-queso-veggies",
+      id: "jul24-queso-feeding",
       day: "jul-24",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -374,22 +324,12 @@ window.APP_CONFIG = {
       complete: false
     },
     {
-      id: "jul24-queso-insects",
-      day: "jul-24",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
-      complete: false
-    },
-    {
       id: "jul24-tater-worm-check",
       day: "jul-24",
       period: "Morning",
       time: "Anytime",
       title: "Check Tater Tot's tank",
-      detail: "If you still see Thursday's worm floating around in the tank, please remove it.",
+      detail: "If you still see any of Thursday's worms floating around in the tank, please remove them.",
       priority: false,
       complete: false
     },
@@ -407,19 +347,19 @@ window.APP_CONFIG = {
       id: "jul25-dogs-breakfast",
       day: "jul-25",
       period: "Morning",
-      time: "Morning",
+      time: "After 7 AM",
       title: "Feed Rocket and Lola",
-      detail: "No exact time needed. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
+      detail: "Any time after 7:00 AM - they are fine waiting. Rocket gets one full scoop from his food bin. Lola gets one scoop from the dog food jar in the kitchen. Freshen the water in my office.",
       priority: true,
       complete: false
     },
     {
-      id: "jul25-queso-veggies",
+      id: "jul25-queso-feeding",
       day: "jul-25",
       period: "Morning",
-      time: "Morning",
-      title: "Feed Queso veggies and berries",
-      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge, and take out the old ones.",
+      time: "With the dogs",
+      title: "Feed Queso",
+      detail: "Give Queso a small handful of the cut-up vegetables and berries from the fridge (take out the old ones) plus 5 to 6 roaches or superworms. Feed him with or around the dogs, any time after 7:00 AM, so his basking light is on for the rest of the day after he eats. If the dogs get fed early, shift Queso to early evening instead - no later than about 6:00 PM, so he can bask a couple of hours before his light turns off at 8:00 PM. A separate trip is fine if that fits your schedule better.",
       priority: true,
       complete: false
     },
@@ -431,16 +371,6 @@ window.APP_CONFIG = {
       title: "Check Queso's cage",
       detail: "Check the tank for poop. If you find any, doggy bags are next to the tank - take it out along with a handful of the sand around it. Does not have to be perfect.",
       priority: false,
-      complete: false
-    },
-    {
-      id: "jul25-queso-insects",
-      day: "jul-25",
-      period: "Afternoon",
-      time: "Midday",
-      title: "Feed Queso roaches or superworms",
-      detail: "Give Queso 5 to 6 roaches or superworms. Midday is best - not too early in the morning or too close to bedtime, so he has time to bask and digest.",
-      priority: true,
       complete: false
     },
     {
@@ -484,16 +414,16 @@ window.APP_CONFIG = {
     {
       name: "Tater Tot",
       type: "Axolotl",
-      note: "Only needs food offered a couple of times during the trip - Monday and Thursday. Grab a worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat it right away, but if the worm is still floating in the tank the next day, please remove it.",
-      tags: ["Worm Mon and Thu", "Rinse, use tweezers", "Remove uneaten worm next day"],
+      note: "Only needs food a couple of times during the trip - Monday and Thursday. Give her 3 to 4 red worms, only the ones in the small round cup - that is the only food she is eating reliably right now. Grab each worm with the tweezers, rinse off any dirt, and try to float it in front of her face. It is OK if she does not eat right away, but if worms are still floating in the tank the next day, please remove them.",
+      tags: ["Red worms only", "3-4 worms Mon and Thu", "Small round cup", "Remove uneaten next day"],
       photo: "assets/tater-tot.jpg",
       bg: "linear-gradient(135deg, #f5c6d6, #8fc7d7)"
     },
     {
       name: "Queso",
       type: "Bearded dragon",
-      note: "Daily: a small handful of the cut-up vegetables and berries from the fridge (remove the old ones), plus 5 to 6 roaches or superworms around midday so he has time to bask and digest. Check the tank for poop - doggy bags are next to the tank; take it out with a handful of the surrounding sand, no need to be perfect. Heat lamp and lights are automatic. If a bulb burns out, just let Jay know and we can swap in a new one.",
-      tags: ["Veggies and berries daily", "5-6 roaches midday", "Scoop poop", "Lights automatic"],
+      note: "One feeding a day: a small handful of the cut-up vegetables and berries from the fridge (remove the old ones) plus 5 to 6 roaches or superworms. Best done with the dogs' feeding, any time after 7:00 AM, so his basking light is on the rest of the day. If the dogs get fed early, feed Queso in the early evening instead - no later than about 6:00 PM (his light turns off at 8:00 PM). A separate trip is fine too. Check the tank for poop - doggy bags are next to the tank; take it out with a handful of the surrounding sand, no need to be perfect. Heat lamp and lights are automatic. If a bulb burns out, just let Jay know and we can swap in a new one.",
+      tags: ["One feeding daily", "After 7 AM with dogs", "By 6 PM if evening", "Scoop poop"],
       photo: "assets/queso.jpg",
       bg: "linear-gradient(135deg, #d8b052, #8c9b4a)"
     }
